@@ -22,7 +22,7 @@ public:
 		//default_random_engine generatorY;
 		//uniform_int_distribution<int> distributionX(0,(int)X);
 		//uniform_real_distribution<double> distributionY(0.0,Y);
-		nodeList.clear();
+		nodeList.clear(); // a serious bug solved Alhamdulillah
 		for(int i = 0; i<numberOfNodes ; i++)
 		{
 			nodeList.push_back( NodeInfo(distributionX(generatorX),distributionX(generatorX),i) );

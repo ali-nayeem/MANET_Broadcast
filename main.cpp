@@ -10,7 +10,7 @@
 
 #define TRANSMISSION_RANGE 15.0
 #define AX 100
-#define AY 100
+//#define AY 100
 //#define NUMBER_OF_NODES 70
 #define NUMBER_OF_SCENARIO 100
 #define FRACTION_OF_SOURCE 1.0
@@ -31,7 +31,7 @@ double calculateRedundancy(int numOfNodes)
 	double sum=0;
 	for(int i=0;i<NUMBER_OF_SCENARIO;i++) //for each scenario
 	{
-		Simulator sim(AX,AY,numOfNodes);
+		Simulator sim(AX,AX,numOfNodes);
 		if(FRACTION_OF_SOURCE<1.0)
 		{
 			// using built-in random generator:

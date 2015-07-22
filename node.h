@@ -67,7 +67,10 @@ public:
 		for(int i=0;i<info.neighborList.size();i++)
 		{
 			SBA & neighbor = NodeList[info.neighborList[i]];
-			neighbor.send(Q,NodeList,info.id);
+			if(!neighbor.packetForwarded)   //only send to those who haven't forward yet
+			{
+				neighbor.send(Q,NodeList,info.id);
+			}
 		}
 	}
 private:

@@ -8,17 +8,22 @@
 #include"simulator.h"
 #include"node.h"
 
-#define TRANSMISSION_RANGE 15.0
+using namespace std;
+
+/*******************PARAMETERS***********************/
+#define TRANSMISSION_RANGE 18.0 
 #define AX 100
 //#define AY 100
 //#define NUMBER_OF_NODES 70
-#define NUMBER_OF_SCENARIO 100
+#define NUMBER_OF_SCENARIO 1000
 #define FRACTION_OF_SOURCE 1.0
-using namespace std;
 
+
+/***********************STATIC MEMBERS*****************************/
 double NodeInfo::transmissionRange = TRANSMISSION_RANGE;
 default_random_engine Simulator::generatorX;
 uniform_int_distribution<int> Simulator::distributionX(0,(int)AX);
+
 // random generator function:
 int myrandom (int i) { return rand()%i;}
 double calculateRedundancy(int numOfNodes)
@@ -40,7 +45,7 @@ double calculateRedundancy(int numOfNodes)
 		for(int j=0;j<numOfNodes*FRACTION_OF_SOURCE;j++) //for each source node
 		{
 			vector <SBA> list;
-			sim.initiateBroadcast(sourceList[j],list);
+			sim.initiateBroadcast(sourceList[j],list); //bottleneck
 			sum = sum + sim.calculateRedundancy(list);
 		}
 	}
@@ -48,12 +53,13 @@ double calculateRedundancy(int numOfNodes)
 }
 int main()
 {
-	srand ( unsigned ( std::time(0) ) );
+	//srand ( unsigned ( std::time(0) ) );
 	//Simulator sim(AX,AY,NUMBER_OF_NODES);
 	//Simulator sim2(AX,AY,NUMBER_OF_NODES);
 	//vector <SBA> list;
 	//sim.initiateBroadcast(4,list);
 	//cout<<sim.calculateRedundancy(list);
+	cout<<TRANSMISSION_RANGE<<","<<NUMBER_OF_SCENARIO<<","<<FRACTION_OF_SOURCE<<", 70-200"<<endl;
 	for(int i=70; i<=200; i+=10)
 	{
 		cout<<i<<","<<calculateRedundancy(i)<<endl;

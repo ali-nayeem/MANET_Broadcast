@@ -11,7 +11,7 @@
 using namespace std;
 
 /*******************PARAMETERS***********************/
-#define TRANSMISSION_RANGE 18.0 
+#define TRANSMISSION_RANGE 21.0 
 #define AX 100
 //#define AY 100
 //#define NUMBER_OF_NODES 70

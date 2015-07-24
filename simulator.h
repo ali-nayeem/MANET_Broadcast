@@ -91,7 +91,7 @@ public:
 			next.forward(pQueue,bAlgoList);
 		}
 	}
-	template<class BALGO> double calculateRedundancy(vector<BALGO> & bAlgoList)
+	template<class BALGO> double calculateRedundancyOld(vector<BALGO> & bAlgoList)
 	{
 		double sumOfFraction=0;
 		for(int i=0;i<numberOfNodes;i++)

@@ -11,7 +11,7 @@
 using namespace std;
 
 /*******************PARAMETERS***********************/
-#define TRANSMISSION_RANGE 18.0 
+#define TRANSMISSION_RANGE 21.0 
 #define AX 100
 //#define AY 100
 //#define NUMBER_OF_NODES 70
@@ -24,8 +24,10 @@ double NodeInfo::transmissionRange = TRANSMISSION_RANGE;
 default_random_engine Simulator::generatorX;
 uniform_int_distribution<int> Simulator::distributionX(0,(int)AX);
 
+/************************GLOBAL FUNCTIONS**************************/
 // random generator function:
-int myrandom (int i) { return rand()%i;}
+//int myrandom (int i) { return rand()%i;}
+
 double calculateRedundancy(int numOfNodes)
 {
 	vector<int> sourceList;
@@ -51,6 +53,7 @@ double calculateRedundancy(int numOfNodes)
 	}
 	return sum/(NUMBER_OF_SCENARIO*numOfNodes*FRACTION_OF_SOURCE);
 }
+
 int main()
 {
 	//srand ( unsigned ( std::time(0) ) );

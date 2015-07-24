@@ -94,10 +94,14 @@ public:
 	template<class BALGO> double calculateRedundancy(vector<BALGO> & bAlgoList)
 	{
 		double sumOfFraction=0;
-		for(int i=0;i<numberOfNodes;i++)
+                int totalForwardingNodes=0;
+		for(int i=0;i<numberOfNodes;i++) //for each *forwarding* node
 		{
+                    if( bAlgoList[i].isForwarded() )
+                    {
+                        totalForwardingNodes++;
 			int forwardingNeigbors=0;
-			for(int j=0; j<bAlgoList[i].info.neighborList.size();j++)
+			for(int j=0; j<bAlgoList[i].info.neighborList.size();j++) //for each neighbor
 			{
 				if( bAlgoList[ bAlgoList[i].info.neighborList[j] ].isForwarded() )
 				{
@@ -105,8 +109,9 @@ public:
 				}
 			}
 			sumOfFraction = sumOfFraction + 1.0*forwardingNeigbors/bAlgoList[i].info.neighborList.size();
+                    }
 		}
-		return sumOfFraction/numberOfNodes;
+		return sumOfFraction/totalForwardingNodes;
 	}
 private:
 	double X,Y;
